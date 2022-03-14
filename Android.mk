@@ -3,7 +3,7 @@
 
 ifneq ($(filter TAB-A04-BR3,$(TARGET_DEVICE)),)
 
-LOCAL_PATH := device/benesse/TAB-A04-BR3
+LOCAL_PATH := device/benesse/TAB_A04_BR3
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

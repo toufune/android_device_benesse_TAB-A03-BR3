@@ -1,4 +1,4 @@
-LOCAL_PATH := device/benesse/TAB-A04-BR3
+LOCAL_PATH := device/benesse/TAB_A04_BR3
 
 TARGET_BOARD_PLATFORM := mt8167               # From ro.mediatek.platform, but lowercase value
 TARGET_NO_BOOTLOADER := true
@@ -52,7 +52,6 @@ TW_DEFAULT_LANGUAGE := en                     # Set Default Language
 TW_EXTRA_LANGUAGES := true
 
 # Kernel
-TARGET_IS_64_BIT := true                      # true/false: Determine if the device is 64-bit or not
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/zImage
 TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/prebuilt/zImage
 # Get the CMDLine, Base, Pagesize and offsets from Unpacked recovery image and put below
@@ -68,8 +67,6 @@ TARGET_BOARD_SUFFIX := _64                    # Remove if the device is 32-bit
 TARGET_USES_64_BIT_BINDER := true             # Remove if the device is 32-bit
 
 # Architecture
-# According to the device's architecture (64-bit or 32-bit)
-ifeq ($(TARGET_IS_64_BIT),true)
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
@@ -83,11 +80,4 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_CPU_ABI_LIST_64_BIT := $(TARGET_CPU_ABI)
 TARGET_CPU_ABI_LIST_32_BIT := $(TARGET_2ND_CPU_ABI),$(TARGET_2ND_CPU_ABI2)
 TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI_LIST_64_BIT),$(TARGET_CPU_ABI_LIST_32_BIT)
-else
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_VARIANT := cortex-a7
-TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI),$(TARGET_CPU_ABI2)
-endif
+
